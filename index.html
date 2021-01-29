@@ -73,8 +73,8 @@
                     <input id="count-ec" class="inp-style inp-width " type="number" value="0" name=" ">
                 </div>
                 <div class="plus-minus-btn ">
-                    <button id="plus-btn-ec" class="quantity-btn">+</button>
-                    <button id="minus-btn-ec" class="quantity-btn">-</button>
+                    <button onclick="economyClass(true)" class="quantity-btn">+</button>
+                    <button onclick="economyClass(false)" class="quantity-btn">-</button>
                 </div>
             </div>
             <div class="calculations ">
@@ -135,27 +135,7 @@
             }
             ticketCount.value = newTicketCount;
             const ticketPrice = newTicketCount * 100;
-        }
-        document.getElementById('plus-btn-ec').addEventListener('click', function() {
-            economyClass(true);
-        });
-        document.getElementById('minus-btn-ec').addEventListener('click', function() {
-            economyClass(false);
-        });
-        // document.getElementById('plus-btn-ec').addEventListener('click', function() {
-        //     const ticketCount = document.getElementById('count-ec');
-        //     const ticketCountValue = parseInt(ticketCount.value);
-        //     const newTicketCount = ticketCountValue + 1;
-        //     ticketCount.value = newTicketCount;
-        //     const ticketPrice = newTicketCount * 100;
-        // });
-        // document.getElementById('minus-btn-ec').addEventListener('click', function() {
-        //     const ticketCount = document.getElementById('count-ec');
-        //     const ticketCountValue = parseInt(ticketCount.value);
-        //     const newTicketCount = ticketCountValue - 1;
-        //     ticketCount.value = newTicketCount;
-        //     const ticketPrice = newTicketCount * 100;
-        // });
+        };
     </script>
 </body>
 
