@@ -130,7 +130,7 @@
             if (isCountPlus == true) {
                 newTicketCount = ticketCountValue + 1;
             }
-            if (isCountPlus == false) {
+            if (isCountPlus == false && ticketCountValue > 0) {
                 newTicketCount = ticketCountValue - 1;
             }
             ticketCount.value = newTicketCount;
