@@ -83,7 +83,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right ">
-                        <p>$500</p>
+                        <p id="subtotal">$0</p>
                     </div>
                 </div>
 
@@ -92,7 +92,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right ">
-                        <p>$50</p>
+                        <p id="vat">$0</p>
                     </div>
                 </div>
                 <hr>
@@ -101,7 +101,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right ">
-                        <p>$550</p>
+                        <p id="grand-total">$0</p>
                     </div>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                 newTicketCount = ticketCountValue - 1;
             }
             ticketCount.value = newTicketCount;
-            const ticketPrice = newTicketCount * 150;
+            priceCalculations();
         };
 
         function economyClass(isCountPlus) {
@@ -134,8 +134,28 @@
                 newTicketCount = ticketCountValue - 1;
             }
             ticketCount.value = newTicketCount;
-            const ticketPrice = newTicketCount * 100;
+            priceCalculations();
         };
+
+        function priceCalculations() {
+            const firstClassCount = document.getElementById('count-fc');
+            const firstClassTicket = parseInt(firstClassCount.value);
+            const firstClassPrice = firstClassTicket * 150;
+
+            const economyClassCount = document.getElementById('count-ec');
+            const economyClassTicket = parseInt(economyClassCount.value);
+            const economyClassPrice = economyClassTicket * 100;
+            // Subtotal Calculation
+            const subtotal = firstClassPrice + economyClassPrice;
+            console.log(subtotal);
+            document.getElementById('subtotal').innerText = '$' + subtotal;
+            //VAT 10% Calculation
+            const vat = subtotal / 100 * 10;
+            document.getElementById('vat').innerText = '$' + vat;
+            //Grand Total Calculation
+            const grandTotal = subtotal + vat;
+            document.getElementById('grand-total').innerText = '$' + grandTotal;
+        }
     </script>
 </body>
 
