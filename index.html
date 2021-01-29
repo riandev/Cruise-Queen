@@ -26,21 +26,18 @@
     </header>
 
     <!--Booking Section-->
-    <main class="main-content container">
-
+    <section id="booking-section" class="main-content container">
         <div class="booking-content">
             <h1>Cruise Queen</h1>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
                 book.
             </p>
         </div>
-
-
         <div class="booking-form">
             <h3>Book Ocean Time</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
-                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+                <input class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
             </div>
             <div class="input-group">
                 <label for="">Flying To</label>
@@ -66,7 +63,6 @@
                     <button onclick="firstClass(false)" class="quantity-btn">-</button>
                 </div>
             </div>
-
             <div class="input-group f-class ">
                 <div>
                     <label for=" ">Economy ($100)</label>
@@ -86,7 +82,6 @@
                         <p id="subtotal">$0</p>
                     </div>
                 </div>
-
                 <div class="amount ">
                     <div class="left ">
                         <p>Charge 10% VAT</p>
@@ -105,9 +100,69 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style ">Book Now</button>
+            <button id="book-now" class="btn-style ">Book Now</button>
         </div>
-    </main>
+    </section>
+    <!-- Confirm Booking Section -->
+    <section id="confirm-booking">
+        <div class="main-content container">
+            <div class="booking-content">
+                <h1>Cruise Queen</h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+                    book.
+                </p>
+            </div>
+            <div class="booking-form">
+                <h3 id="title-name">Book Ocean Time</h3>
+                <div class="input-group">
+                    <p class="distance">Flying From: Dhaka, Bangladesh</p>
+                </div>
+                <div class="input-group">
+                    <p class="distance">Flying To: New York, United States</p>
+                </div>
+                <div class="inputs">
+                    <div class="input-group">
+                        <p class="date">Departure Date: 30 January 2021</p>
+                    </div>
+                    <div class="input-group ">
+                        <p class="date">Return Date: 4 February 2021</p>
+                    </div>
+                </div>
+                <!-- Booking Start-->
+                <h4 class="booking-status">Shortly You Will Get SMS With Your Booking Details. <br> Your Booking Number: CQ202101
+                </h4>
+                <!-- Booking End-->
+                <div class="calculations ">
+                    <div class="amount ">
+                        <div class="left ">
+                            <p>Subtotal</p>
+                        </div>
+                        <div class="right ">
+                            <p id="subtotal-confirm">$0</p>
+                        </div>
+                    </div>
+                    <div class="amount ">
+                        <div class="left ">
+                            <p>Charge 10% VAT</p>
+                        </div>
+                        <div class="right ">
+                            <p id="vat-confirm">$0</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="amount ">
+                        <div class="left ">
+                            <h4>Total</h4>
+                        </div>
+                        <div class="right ">
+                            <p id="grand-total-confirm">$0</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-style ">Thanks For Your Order</button>
+            </div>
+        </div>
+    </section>
     <script>
         function firstClass(isCountIncrease) {
             const ticketCount = document.getElementById('count-fc');
@@ -146,16 +201,28 @@
             const economyClassTicket = parseInt(economyClassCount.value);
             const economyClassPrice = economyClassTicket * 100;
             // Subtotal Calculation
-            const subtotal = firstClassPrice + economyClassPrice;
-            console.log(subtotal);
+            let subtotal = firstClassPrice + economyClassPrice;
             document.getElementById('subtotal').innerText = '$' + subtotal;
             //VAT 10% Calculation
-            const vat = subtotal / 100 * 10;
+            let vat = subtotal / 100 * 10;
             document.getElementById('vat').innerText = '$' + vat;
             //Grand Total Calculation
-            const grandTotal = subtotal + vat;
+            let grandTotal = subtotal + vat;
             document.getElementById('grand-total').innerText = '$' + grandTotal;
-        }
+            return [subtotal, vat, grandTotal, firstClassPrice, economyClassPrice];
+        };
+        // Confrim Booking Section
+        document.getElementById('book-now').addEventListener('click', function() {
+            document.getElementById('booking-section').style.display = 'none';
+            document.getElementById('confirm-booking').style.display = 'block';
+            document.getElementById('title-name').style.textAlign = 'center';
+            let confirmBookingCalculation = priceCalculations();
+            document.getElementById('subtotal-confirm').innerText = '$' + confirmBookingCalculation[0];
+            document.getElementById('vat-confirm').innerText = '$' + confirmBookingCalculation[1];
+            document.getElementById('grand-total-confirm').innerText = '$' + confirmBookingCalculation[2];
+            document.getElementById('total-fc-booking').innerText = confirmBookingCalculation[3];
+            document.getElementById('total-fc-booking').innerText = confirmBookingCalculation[4];
+        });
     </script>
 </body>
 

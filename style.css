@@ -147,3 +147,27 @@ a.active {
     display: flex;
     justify-content: space-between;
 }
+
+#confirm-booking {
+    display: none;
+}
+
+.distance {
+    font-size: 10px;
+    text-align: center;
+    font-weight: lighter;
+    margin-top: 10px;
+}
+
+.date {
+    font-size: 10px;
+    font-weight: lighter;
+}
+
+.booking-status {
+    margin-top: 12px;
+    margin-bottom: 15px;
+    color: lightseagreen;
+    text-align: center;
+    font-size: 16px;
+}
