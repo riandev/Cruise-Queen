@@ -55,7 +55,7 @@
             </div>
             <div class="input-group f-class ">
                 <div>
-                    <label for=" ">First Class ($150)</label>
+                    <label for=" ">First Class($150)</label>
                     <input id="count-fc" class="inp-style inp-width " type="number" value="0" name=" ">
                 </div>
                 <div class="plus-minus-btn ">
@@ -131,6 +131,24 @@
                 <!-- Booking Start-->
                 <h4 class="booking-status">Shortly You Will Get SMS With Your Booking Details. <br> Your Booking Number: CQ202101
                 </h4>
+                <div class="amount ">
+                    <div class="left ">
+                        <p>First Class(<span id="fc-confirm-count">0</span>)</p>
+                    </div>
+                    <div class="right ">
+                        <p id="fc-confirm">$0</p>
+                    </div>
+                </div>
+                <br>
+                <div class="amount ">
+                    <div class="left ">
+                        <p>Economy Class(<span id="ec-confirm-count">0</span>)</p>
+                    </div>
+                    <div class="right ">
+                        <p id="ec-confirm">$0</p>
+                    </div>
+                </div>
+                <br>
                 <!-- Booking End-->
                 <div class="calculations ">
                     <div class="amount ">
@@ -209,7 +227,7 @@
             //Grand Total Calculation
             let grandTotal = subtotal + vat;
             document.getElementById('grand-total').innerText = '$' + grandTotal;
-            return [subtotal, vat, grandTotal, firstClassPrice, economyClassPrice];
+            return [subtotal, vat, grandTotal, firstClassPrice, economyClassPrice, firstClassTicket, economyClassTicket];
         };
         // Confrim Booking Section
         document.getElementById('book-now').addEventListener('click', function() {
@@ -220,8 +238,10 @@
             document.getElementById('subtotal-confirm').innerText = '$' + confirmBookingCalculation[0];
             document.getElementById('vat-confirm').innerText = '$' + confirmBookingCalculation[1];
             document.getElementById('grand-total-confirm').innerText = '$' + confirmBookingCalculation[2];
-            document.getElementById('total-fc-booking').innerText = confirmBookingCalculation[3];
-            document.getElementById('total-fc-booking').innerText = confirmBookingCalculation[4];
+            document.getElementById('fc-confirm').innerText = '$' + confirmBookingCalculation[3];
+            document.getElementById('ec-confirm').innerText = '$' + confirmBookingCalculation[4];
+            document.getElementById('fc-confirm-count').innerText = confirmBookingCalculation[5];
+            document.getElementById('ec-confirm-count').innerText = confirmBookingCalculation[6];
         });
     </script>
 </body>
