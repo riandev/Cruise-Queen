@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <!--Header and Menu Section-->
+    <!--Header and Menu Section Start-->
     <header class="container">
         <nav>
             <ul>
@@ -24,8 +24,9 @@
             </ul>
         </nav>
     </header>
+    <!--Header and Menu Section End-->
 
-    <!--Booking Section-->
+    <!--Booking Section Start-->
     <section id="booking-section" class="main-content container">
         <div class="booking-content">
             <h1>Cruise Queen</h1>
@@ -103,7 +104,9 @@
             <button id="book-now" class="btn-style ">Book Now</button>
         </div>
     </section>
-    <!-- Confirm Booking Section -->
+    <!--Booking Section End-->
+
+    <!-- Confirm Booking Section Start-->
     <section id="confirm-booking">
         <div class="main-content container">
             <div class="booking-content">
@@ -128,7 +131,8 @@
                         <p class="date">Return Date: 4 February 2021</p>
                     </div>
                 </div>
-                <!-- Booking Start-->
+
+                <!-- Booking Count & Price Calculation Start-->
                 <h4 class="booking-status">Shortly You Will Get SMS With Your Booking Details. <br> Your Booking Number: CQ202101
                 </h4>
                 <div class="amount ">
@@ -149,7 +153,8 @@
                     </div>
                 </div>
                 <br>
-                <!-- Booking End-->
+                <!-- Booking Count & Price Calculation End-->
+
                 <div class="calculations ">
                     <div class="amount ">
                         <div class="left ">
@@ -181,6 +186,8 @@
             </div>
         </div>
     </section>
+    <!-- Confirm Booking Section Start-->
+
     <script>
         function firstClass(isCountIncrease) {
             const ticketCount = document.getElementById('count-fc');
@@ -218,28 +225,36 @@
             const economyClassCount = document.getElementById('count-ec');
             const economyClassTicket = parseInt(economyClassCount.value);
             const economyClassPrice = economyClassTicket * 100;
+
             // Subtotal Calculation
             let subtotal = firstClassPrice + economyClassPrice;
             document.getElementById('subtotal').innerText = '$' + subtotal;
+
             //VAT 10% Calculation
             let vat = subtotal / 100 * 10;
             document.getElementById('vat').innerText = '$' + vat;
+
             //Grand Total Calculation
             let grandTotal = subtotal + vat;
             document.getElementById('grand-total').innerText = '$' + grandTotal;
             return [subtotal, vat, grandTotal, firstClassPrice, economyClassPrice, firstClassTicket, economyClassTicket];
         };
+
         // Confrim Booking Section
         document.getElementById('book-now').addEventListener('click', function() {
             document.getElementById('booking-section').style.display = 'none';
             document.getElementById('confirm-booking').style.display = 'block';
             document.getElementById('title-name').style.textAlign = 'center';
+
+            //Booking Confirm Screen Calculation
             let confirmBookingCalculation = priceCalculations();
             document.getElementById('subtotal-confirm').innerText = '$' + confirmBookingCalculation[0];
             document.getElementById('vat-confirm').innerText = '$' + confirmBookingCalculation[1];
             document.getElementById('grand-total-confirm').innerText = '$' + confirmBookingCalculation[2];
             document.getElementById('fc-confirm').innerText = '$' + confirmBookingCalculation[3];
             document.getElementById('ec-confirm').innerText = '$' + confirmBookingCalculation[4];
+
+            //Booking Count Show in ()
             document.getElementById('fc-confirm-count').innerText = confirmBookingCalculation[5];
             document.getElementById('ec-confirm-count').innerText = confirmBookingCalculation[6];
         });
